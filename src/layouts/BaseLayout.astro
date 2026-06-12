@@ -68,11 +68,19 @@ const jsonLd = {
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content={String(banner.width)} />
+    <meta property="og:image:height" content={String(banner.height)} />
+    <meta property="og:image:alt" content={`${SITE_NAME} — Aviemore, Scottish Highlands`} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {GA_ID && (
       <>
