@@ -1,19 +1,46 @@
 # Aviemore Taxis website
 
-This is the website for my relations taxi firm.
+Static website for [Aviemore Taxis](https://www.taxisinaviemore.com) — built with [Astro](https://astro.build) (+ React islands), hosted on an Azure Static Web App (Free tier).
 
-## How
+## Stack
 
-Well the static site is managed via contentful and then updated by a nuget package I have here on github called [micklaw/Dotented.](https://github.com/micklaw/Dotented) It allows you to build out a static site using the contentful GraphQL api and then render the content pages via POCOs and Razor.
+- **Astro 5** static site generation, with `@astrojs/react` for the two interactive islands (mobile nav, gallery lightbox) and `@astrojs/sitemap`
+- **Image optimization** via `astro:assets`/Sharp — originals in `src/assets/images/` are emitted as responsive WebP/AVIF
+- **Azure Static Web Apps (Free)** for hosting, defined in `infra/main.bicep`
+- **GitHub Actions** (`.github/workflows/deploy.yml`) builds and deploys on push to `master`; PRs get preview environments that are torn down on close
+- `public/staticwebapp.config.json` 301-redirects the legacy `*.html` URLs from the old site and serves a branded 404
 
-If you want to find out how it works RTFM on [micklaw/Dotented.](https://github.com/micklaw/Dotented) and simply look at this repo to see how to configure it for actual use, the other stuff I'll details below, but it comprises off:
+## Local development
 
-- Webhook is fired on contentful
-- Action is kicked off here see .github/workflows/example.yml
-- If the webhook event matched this then deploy
-- Static site generation code is ran in action
-- Uploaded to gh-pages branch
+```sh
+npm install
+npm run dev        # dev server on http://localhost:4321
+npm run build      # static build into dist/
+```
 
-![Contentful webhook config](/contentful-webhook.png)
+To test the SWA routing rules (redirects, 404) locally:
 
-Its actually pretty easy to configure, simply digging about through here should do it. My example.yml has some of the old NPM stuff from when I don't this about 4 years ago, but I'm sure there is a better way now, I just couldnt be bothered changing it.
+```sh
+npx @azure/static-web-apps-cli start ./dist
+```
+
+## Infrastructure
+
+One-time setup (requires `az login` and `gh auth login`):
+
+```sh
+az group create -n rg-aviemore-taxis -l westeurope
+az deployment group create -g rg-aviemore-taxis -f infra/main.bicep
+
+# Deployment token for GitHub Actions:
+az staticwebapp secrets list -n swa-aviemore-taxis -g rg-aviemore-taxis \
+  --query "properties.apiKey" -o tsv
+gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN --repo micklaw/Aviemore-Taxis --body "<token>"
+```
+
+If the deployment token is ever compromised, reset it with
+`az staticwebapp secrets reset-api-key -n swa-aviemore-taxis -g rg-aviemore-taxis`
+and update the GitHub secret.
+
+When a custom domain is added later, update `site` in `astro.config.mjs` and the
+`Sitemap:` line in `public/robots.txt`.
