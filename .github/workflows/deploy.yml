@@ -68,6 +68,8 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          PUBLIC_GA_ID: ${{ vars.PUBLIC_GA_ID }}
 
       - name: Deploy
         uses: Azure/static-web-apps-deploy@v1
@@ -97,6 +99,8 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          PUBLIC_GA_ID: ${{ vars.PUBLIC_GA_ID }}
 
       - name: Deploy preview
         uses: Azure/static-web-apps-deploy@v1
