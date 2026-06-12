@@ -1,22 +1,28 @@
+targetScope = 'subscription'
+
+@description('Resource group name')
+param resourceGroupName string = 'rg-aviemore-taxis'
+
 @description('Static Web App name')
 param name string = 'swa-aviemore-taxis'
 
-@description('Region for the Static Web App control plane (content is served from a global CDN)')
+@description('Region for the resource group and Static Web App control plane')
 @allowed(['westeurope', 'centralus', 'eastus2', 'westus2', 'eastasia'])
 param location string = 'westeurope'
 
-resource swa 'Microsoft.Web/staticSites@2024-04-01' = {
-  name: name
+resource rg 'Microsoft.Resources/resourceGroups@2024-03-01' = {
+  name: resourceGroupName
   location: location
-  sku: {
-    name: 'Free'
-    tier: 'Free'
-  }
-  properties: {
-    allowConfigFileUpdates: true
-    stagingEnvironmentPolicy: 'Enabled'
+}
+
+module swa 'modules/swa.bicep' = {
+  name: 'swa-deployment'
+  scope: rg
+  params: {
+    name: name
+    location: location
   }
 }
 
-output defaultHostname string = swa.properties.defaultHostname
-output staticWebAppName string = swa.name
+output defaultHostname string = swa.outputs.defaultHostname
+output staticWebAppName string = swa.outputs.staticWebAppName
