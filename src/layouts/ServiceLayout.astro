@@ -1,0 +1,96 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { SERVICES_NAV } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  intro?: string;
+}
+
+const { title, description, heading, intro } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHeader title={heading} intro={intro} />
+
+  <section class="section">
+    <div class="container service-layout">
+      <nav class="service-nav" aria-label="Services">
+        <h2>Our Services</h2>
+        <ul>
+          {
+            SERVICES_NAV.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  aria-current={currentPath === link.href ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="service-content">
+        <slot />
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</BaseLayout>
+
+<style>
+  .service-layout {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+
+  .service-nav {
+    background: var(--slate-100);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .service-nav h2 {
+    font-size: 1.05rem;
+    margin-bottom: 0.6em;
+  }
+
+  .service-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .service-nav a {
+    display: block;
+    padding: 0.45rem 0;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .service-nav a[aria-current='page'] {
+    color: var(--amber-600);
+  }
+
+  .service-content :global(img) {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 760px) {
+    .service-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

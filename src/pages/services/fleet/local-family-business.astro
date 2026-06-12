@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import peopleCarrierImage from '../../../assets/images/fleet/people-carrier.jpg';
+---
+
+<ServiceLayout
+  title="Local Family Business | Aviemore Taxis"
+  description="Aviemore Taxis have been trusted since 1987 for local runs, airport transfers and tourist trips across the Scottish Highlands."
+  heading="Local Family Business"
+  intro="Trusted by locals and visitors since 1987."
+>
+  <Image
+    src={peopleCarrierImage}
+    alt="An Aviemore Taxis people carrier"
+    width={800}
+    format="webp"
+    loading="eager"
+  />
+  <p>
+    Aviemore Taxis have been trusted since 1987 for local runs, airport
+    transfers and tourist trips. We take pride in offering you a reliable,
+    courteous service, and our family run business serves the entire area of
+    the Scottish Highlands.
+  </p>
+</ServiceLayout>

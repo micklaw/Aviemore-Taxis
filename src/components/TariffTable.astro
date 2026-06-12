@@ -1,0 +1,49 @@
+---
+import { TARIFFS } from '../data/site';
+---
+
+<div class="grid grid--3 tariffs">
+  {
+    TARIFFS.map((tariff) => (
+      <article class="card">
+        <div class="card__body">
+          <h3>{tariff.name}</h3>
+          <p>{tariff.applies}</p>
+          <table>
+            <tbody>
+              <tr>
+                <td>{tariff.flagfall.distance}</td>
+                <td>{tariff.flagfall.price}</td>
+              </tr>
+              <tr>
+                <td>{tariff.increment.distance}</td>
+                <td>{tariff.increment.price}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .tariffs table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+
+  .tariffs td {
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--slate-100);
+  }
+
+  .tariffs td:last-child {
+    text-align: right;
+    font-weight: 700;
+    color: var(--navy-800);
+    white-space: nowrap;
+    padding-left: 1rem;
+  }
+</style>

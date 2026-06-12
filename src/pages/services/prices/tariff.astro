@@ -1,0 +1,18 @@
+---
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import TariffTable from '../../../components/TariffTable.astro';
+import { PHONE, PHONE_HREF } from '../../../data/site';
+---
+
+<ServiceLayout
+  title="Tariff & Prices | Aviemore Taxis"
+  description="Metered taxi tariffs for Aviemore Taxis: standard, night/weekend and holiday rates for Highland taxis and private hire vehicles."
+  heading="Tariff & Prices"
+  intro="The following tariffs apply to all Highland taxis and private hire vehicles fitted with taxi meters."
+>
+  <TariffTable />
+  <p style="margin-top: 1.5rem;">
+    For quotes on airport transfers, tours or contract work, please call us on
+    <a href={PHONE_HREF}>{PHONE}</a>.
+  </p>
+</ServiceLayout>

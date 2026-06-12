@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import { SERVICE_HIGHLIGHTS, SERVICES_NAV } from '../../data/site';
+import fleetImage from '../../assets/images/fleet/multiple-cars.jpg';
+---
+
+<ServiceLayout
+  title="Services | Aviemore Taxis"
+  description="Taxi and private hire services in Aviemore: airport transfers with meet and greet, Highland tours, contracts, and 24/7 availability. Call 01479 811111."
+  heading="Services"
+  intro="A first class taxi and private hire service for locals and tourists alike."
+>
+  <Image
+    src={fleetImage}
+    alt="The Aviemore Taxis fleet"
+    width={800}
+    format="webp"
+    loading="eager"
+  />
+  <p>
+    We are Aviemore's largest independent and family owned taxi company,
+    providing a first class service for both locals and tourists alike.
+  </p>
+  <ul class="checklist">
+    {SERVICE_HIGHLIGHTS.map((item) => <li>{item}</li>)}
+  </ul>
+  <p>Find out more about what we offer:</p>
+  <ul>
+    {
+      SERVICES_NAV.map((link) => (
+        <li>
+          <a href={link.href}>{link.label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</ServiceLayout>

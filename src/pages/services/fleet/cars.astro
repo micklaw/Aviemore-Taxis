@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import carsImage from '../../../assets/images/fleet/cars.png';
+---
+
+<ServiceLayout
+  title="Our Cars | Aviemore Taxis"
+  description="4 and 8 seater vehicles carrying 1 to 8 passengers in safety and comfort, maintained to local authority standards."
+  heading="Our Cars"
+  intro="4 and 8 seater vehicles, carrying 1 to 8 passengers in safety and comfort."
+>
+  <Image
+    src={carsImage}
+    alt="Aviemore Taxis vehicles"
+    width={602}
+    format="webp"
+    loading="eager"
+  />
+  <p>
+    In our 4 or 8 seater vehicles, we can carry from 1 to 8 passengers in
+    safety and comfort. All of our taxis conform to all of the rules and
+    regulations required by the local authority and are mechanically checked
+    and maintained regularly to ensure they are always fit to provide the
+    outstanding service we promise our customers.
+  </p>
+</ServiceLayout>

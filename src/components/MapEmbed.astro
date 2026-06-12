@@ -1,0 +1,22 @@
+---
+// Keyless Google Maps embed — replaces the old Maps Embed API iframe that
+// pointed at a misspelled place ("aviewmore") with a revoked API key.
+---
+
+<iframe
+  class="map-embed"
+  src="https://maps.google.com/maps?q=Aviemore,+Scotland&output=embed"
+  title="Map of Aviemore, Scotland"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<style>
+  .map-embed {
+    border: 0;
+    width: 100%;
+    height: 380px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+</style>

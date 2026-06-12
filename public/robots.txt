@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://swa-aviemore-taxis.azurestaticapps.net/sitemap-index.xml

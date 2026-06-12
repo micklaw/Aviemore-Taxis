@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PHONE, PHONE_HREF } from '../data/site';
+---
+
+<BaseLayout
+  title="Page Not Found | Aviemore Taxis"
+  description="The page you were looking for could not be found."
+>
+  <section class="section">
+    <div class="container" style="text-align: center; padding: 4rem 1.25rem;">
+      <h1>Page not found</h1>
+      <p>
+        Sorry, we couldn't find that page — but we can still find you a taxi.
+      </p>
+      <p>
+        <a href="/" class="btn btn--primary">Back to home</a>
+        &nbsp;
+        <a href={PHONE_HREF}>Call {PHONE}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

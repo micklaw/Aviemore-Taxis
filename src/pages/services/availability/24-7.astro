@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import availabilityImage from '../../../assets/images/fleet/383-services.jpg';
+---
+
+<ServiceLayout
+  title="24/7 Availability | Aviemore Taxis"
+  description="The only taxi service in the Aviemore area available 24 hours a day, 7 days a week, including all public holidays."
+  heading="Available 24/7"
+  intro="Whatever time you need us, we're there."
+>
+  <Image
+    src={availabilityImage}
+    alt="An Aviemore Taxis car ready for service"
+    width={800}
+    format="webp"
+    loading="eager"
+  />
+  <p>
+    We are the only taxi service in the area that can confidently offer our
+    services at whatever time we are needed. We are available 24 hours a day,
+    7 days a week, including all public holidays throughout the year.
+  </p>
+</ServiceLayout>

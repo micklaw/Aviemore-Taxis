@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CallToAction from '../components/CallToAction.astro';
+import familyImage from '../assets/images/fleet/multiple-cars.jpg';
+import carsImage from '../assets/images/fleet/cars-services.jpg';
+import availabilityImage from '../assets/images/fleet/383-services.jpg';
+---
+
+<BaseLayout
+  title="Aviemore Taxis | Aviemore's Reliable Taxi Company"
+  description="Aviemore's largest independent and family owned taxi company, trusted since 1987. 24/7 taxis, airport transfers and Highland tours. Call 01479 811111."
+>
+  <Hero
+    title="Aviemore's reliable taxi company"
+    subtitle="Trusted since 1987 for local runs, airport transfers and tours — available 24 hours a day, 7 days a week."
+  />
+
+  <section class="section">
+    <div class="container">
+      <h2>Private hire and taxi services across the Highlands</h2>
+      <div class="grid grid--3">
+        <ServiceCard
+          title="Local Family Business"
+          href="/services/fleet/local-family-business"
+          image={familyImage}
+          alt="The Aviemore Taxis fleet lined up"
+        >
+          Aviemore Taxis have been trusted since 1987 for local runs, airport
+          transfers and tourist trips. Our family run business serves the
+          entire area of the Scottish Highlands.
+        </ServiceCard>
+        <ServiceCard
+          title="Our Cars"
+          href="/services/fleet/cars"
+          image={carsImage}
+          alt="Aviemore Taxis vehicles"
+        >
+          In our 4 or 8 seater vehicles we can carry from 1 to 8 passengers in
+          safety and comfort, with every taxi checked and maintained to local
+          authority standards.
+        </ServiceCard>
+        <ServiceCard
+          title="Available 24/7"
+          href="/services/availability/24-7"
+          image={availabilityImage}
+          alt="An Aviemore Taxis car ready for a night journey"
+        >
+          We are the only taxi service in the area available whatever time we
+          are needed — 24 hours a day, 7 days a week, including all public
+          holidays.
+        </ServiceCard>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import { PHONE, PHONE_HREF } from '../data/site';
+---
+
+<section class="cta">
+  <div class="container cta__inner">
+    <h2>Need a taxi? We’re available 24 hours a day, 7 days a week.</h2>
+    <a href={PHONE_HREF} class="btn btn--primary">Call {PHONE}</a>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: linear-gradient(135deg, var(--navy-900), var(--navy-700));
+    padding: 2.75rem 0;
+  }
+
+  .cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cta h2 {
+    color: var(--white);
+    margin: 0;
+    font-size: 1.4rem;
+    max-width: 34ch;
+  }
+</style>

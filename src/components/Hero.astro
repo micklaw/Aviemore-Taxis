@@ -1,0 +1,89 @@
+---
+import { Picture } from 'astro:assets';
+import banner from '../assets/images/branding/banner.jpg';
+import { PHONE, PHONE_HREF } from '../data/site';
+
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="hero">
+  <Picture
+    src={banner}
+    formats={['avif', 'webp']}
+    widths={[480, 940]}
+    sizes="100vw"
+    alt=""
+    loading="eager"
+    fetchpriority="high"
+    class="hero__image"
+  />
+  <div class="hero__overlay"></div>
+  <div class="container hero__content">
+    <h1>{title}</h1>
+    <p>{subtitle}</p>
+    <div class="hero__actions">
+      <a href={PHONE_HREF} class="btn btn--primary">Call {PHONE}</a>
+      <a href="/services" class="btn btn--ghost">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: grid;
+    align-items: center;
+    min-height: 420px;
+    overflow: hidden;
+  }
+
+  .hero :global(.hero__image),
+  .hero__overlay,
+  .hero__content {
+    grid-area: 1 / 1;
+  }
+
+  .hero :global(.hero__image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__overlay {
+    background: linear-gradient(
+      100deg,
+      rgba(14, 34, 54, 0.88) 25%,
+      rgba(14, 34, 54, 0.45)
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    color: var(--white);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero__content h1 {
+    color: var(--white);
+    max-width: 22ch;
+  }
+
+  .hero__content p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 44ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+</style>

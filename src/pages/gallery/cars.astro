@@ -1,0 +1,47 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import Lightbox from '../../components/Lightbox.tsx';
+import '../../styles/lightbox.css';
+
+const sources = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/gallery/*.{jpg,png}',
+  { eager: true },
+);
+
+const images = await Promise.all(
+  Object.values(sources).map(async ({ default: source }, i) => {
+    const thumb = await getImage({
+      src: source,
+      width: 520,
+      height: 390,
+      fit: 'cover',
+      format: 'webp',
+    });
+    const full = await getImage({ src: source, width: 1400, format: 'webp' });
+    return {
+      thumb: thumb.src,
+      full: full.src,
+      alt: `Aviemore Taxis vehicle ${i + 1}`,
+    };
+  }),
+);
+---
+
+<BaseLayout
+  title="Gallery — Vehicles | Aviemore Taxis"
+  description="Photos of the Aviemore Taxis fleet of 4 and 8 seater taxis and private hire vehicles."
+>
+  <PageHeader title="Vehicles" intro="Our taxis and private hire vehicles." />
+
+  <section class="section">
+    <div class="container">
+      <Lightbox client:visible images={images} />
+    </div>
+  </section>
+
+  <CallToAction />
+</BaseLayout>

@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import {
+  EMAIL,
+  FACEBOOK,
+  PHONE,
+  PHONE_FREEPHONE,
+  PHONE_FREEPHONE_HREF,
+  PHONE_HREF,
+  PHONE_SECONDARY,
+  PHONE_SECONDARY_HREF,
+  TWITTER,
+} from '../data/site';
+---
+
+<BaseLayout
+  title="Contact | Aviemore Taxis"
+  description="Book a taxi in Aviemore — call 01479 811111 (24/7), freephone 0800 585623, or email aviemoretaxis@gmail.com."
+>
+  <PageHeader
+    title="Get in touch"
+    intro="We're available 24 hours a day, 7 days a week — the quickest way to book is to give us a call."
+  />
+
+  <section class="section">
+    <div class="container grid grid--2">
+      <div>
+        <h2>Enquiries</h2>
+        <ul class="contact-list">
+          <li>
+            <span>Bookings (24/7)</span>
+            <a href={PHONE_HREF}>{PHONE}</a>
+          </li>
+          <li>
+            <span>Office</span>
+            <a href={PHONE_SECONDARY_HREF}>{PHONE_SECONDARY}</a>
+          </li>
+          <li>
+            <span>Freephone</span>
+            <a href={PHONE_FREEPHONE_HREF}>{PHONE_FREEPHONE}</a>
+          </li>
+          <li>
+            <span>Email</span>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </li>
+          <li>
+            <span>Social</span>
+            <span>
+              <a href={FACEBOOK} rel="noopener">Facebook</a>
+              {' · '}
+              <a href={TWITTER} rel="noopener">Twitter</a>
+            </span>
+          </li>
+        </ul>
+        <a href={PHONE_HREF} class="btn btn--primary">Call {PHONE}</a>
+      </div>
+      <div>
+        <h2>Find us in Aviemore</h2>
+        <MapEmbed />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+  }
+
+  .contact-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--slate-100);
+  }
+
+  .contact-list span:first-child {
+    color: var(--slate-500);
+  }
+
+  .contact-list a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CallToAction from '../components/CallToAction.astro';
+import carsImage from '../assets/images/about/cars.jpg';
+import inImage from '../assets/images/about/in.jpg';
+import waveImage from '../assets/images/about/wave.jpg';
+
+const pillars = [
+  {
+    image: carsImage,
+    alt: 'Aviemore Taxis vehicles parked together',
+    title: 'Our Fleet',
+    text: 'We offer a variety of transport services which not only cover our exciting range of Highland tours but also our punctual airport, train, golf and fishing transfers.',
+  },
+  {
+    image: inImage,
+    alt: 'A passenger getting into an Aviemore taxi',
+    title: 'On time, every time',
+    text: 'Getting to and from the airport is crucial and our drivers are aware of this. Our business prides itself in being efficient and punctual, and will get you to your destination on time and in comfort.',
+  },
+  {
+    image: waveImage,
+    alt: 'An Aviemore Taxis driver waving',
+    title: 'We fit around you',
+    text: 'For those who have regular appointments we can arrange either long or short term contracts to accommodate them, as we do with our school and hospital contracts.',
+  },
+];
+---
+
+<BaseLayout
+  title="About Us | Aviemore Taxis"
+  description="Aviemore's largest independent and family owned taxi company. Over 25 years of professional, safe and reliable taxi and private hire service with licensed, CRB-checked drivers."
+>
+  <PageHeader
+    title="About Aviemore Taxis"
+    intro="Aviemore's largest independent and family owned taxi company, with 4 and 8 seater vehicles available."
+  />
+
+  <section class="section">
+    <div class="container prose">
+      <p>
+        Our family business offers over 25 years of professional, safe and
+        reliable taxi and private hire service. All of our drivers are licensed
+        professionals, and also CRB checked. We offer a 24 hours a day, 7 days
+        a week, every day of the year service, with our courteous licensed
+        drivers ferrying locals and tourists in and around the Aviemore area
+        and beyond.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container">
+      <div class="grid grid--3">
+        {
+          pillars.map((pillar) => (
+            <article class="card">
+              <Image
+                src={pillar.image}
+                alt={pillar.alt}
+                width={700}
+                format="webp"
+                loading="lazy"
+              />
+              <div class="card__body">
+                <h3>{pillar.title}</h3>
+                <p>{pillar.text}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</BaseLayout>

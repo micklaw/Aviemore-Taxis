@@ -1,0 +1,20 @@
+{
+  "trailingSlash": "auto",
+  "routes": [
+    { "route": "/index.html", "redirect": "/", "statusCode": 301 },
+    { "route": "/services.html", "redirect": "/services", "statusCode": 301 },
+    { "route": "/about.html", "redirect": "/about", "statusCode": 301 },
+    { "route": "/gallery.html", "redirect": "/gallery", "statusCode": 301 },
+    { "route": "/contact.html", "redirect": "/contact", "statusCode": 301 },
+    { "route": "/news.html", "redirect": "/", "statusCode": 301 },
+    { "route": "/news/*", "redirect": "/", "statusCode": 301 },
+    { "route": "/gallery/cars/index.html", "redirect": "/gallery/cars", "statusCode": 301 },
+    { "route": "/services/fleet/cars/index.html", "redirect": "/services/fleet/cars", "statusCode": 301 },
+    { "route": "/services/fleet/local-family-business/index.html", "redirect": "/services/fleet/local-family-business", "statusCode": 301 },
+    { "route": "/services/availability/24-7/index.html", "redirect": "/services/availability/24-7", "statusCode": 301 },
+    { "route": "/services/prices/tariff/index.html", "redirect": "/services/prices/tariff", "statusCode": 301 }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/404.html", "statusCode": 404 }
+  }
+}
