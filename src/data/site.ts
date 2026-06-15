@@ -23,30 +23,7 @@ export const NAV = [
 export const SERVICES_NAV = [
   { label: 'Local Family Business', href: '/services/fleet/local-family-business' },
   { label: 'Our Cars', href: '/services/fleet/cars' },
-  { label: '24/7 Availability', href: '/services/availability/24-7' },
-  { label: 'Tariff & Prices', href: '/services/prices/tariff' },
-];
-
-export const TARIFFS = [
-  {
-    name: 'Tariff 1',
-    applies: 'The standard daytime rate.',
-    flagfall: { distance: 'For the first 785 yards or part', price: '£2.50' },
-    increment: { distance: 'For each additional 130 yards or part', price: '£0.10' },
-  },
-  {
-    name: 'Tariff 2',
-    applies:
-      'Applies on Boxing Day and the 2nd of January, every day between 9pm and 7am, all day Sunday, and when 5 or more passengers are carried at any one time.',
-    flagfall: { distance: 'For the first 560 yards or part', price: '£3.00' },
-    increment: { distance: 'For each additional 92 yards or part', price: '£0.10' },
-  },
-  {
-    name: 'Tariff 3',
-    applies: "Applies on Christmas Day and New Year's Day.",
-    flagfall: { distance: 'For the first 444 yards or part', price: '£3.60' },
-    increment: { distance: 'For each additional 74 yards or part', price: '£0.10' },
-  },
+  { label: 'Reliable Service', href: '/services/availability/24-7' },
 ];
 
 export const SERVICE_HIGHLIGHTS = [
