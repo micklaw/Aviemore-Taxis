@@ -49,6 +49,7 @@ jobs:
   build_and_deploy:
     needs: [infra]
     runs-on: ubuntu-latest
+    environment: production
     name: Build and deploy
     steps:
       - uses: actions/checkout@v4
